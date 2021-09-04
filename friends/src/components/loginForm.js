@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { onChange, onSubmit } from '../actions/login.actions';
+import { onChange, onSubmit } from '../actions/';
 
 const LoginForm = (props) => {
   // state

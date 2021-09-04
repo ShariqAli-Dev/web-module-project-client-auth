@@ -1,4 +1,4 @@
-import { ON_CHANGE, ON_SUBMIT } from '../actions/login.actions';
+import { ON_CHANGE, ON_SUBMIT } from '../actions';
 
 const initialState = {
   username: '',
