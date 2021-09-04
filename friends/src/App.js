@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 function App(props) {
-  console.log(props);
   return (
     <>
       <div>
@@ -13,7 +12,7 @@ function App(props) {
 
 const mapStateToProps = (state) => {
   return {
-    friends: state.friends,
+    friends: [],
   };
 };
 
