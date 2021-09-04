@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
@@ -23,6 +22,7 @@ function App() {
           </li>
         </ul>
       </nav>
+
       <Switch>
         <PrivateRoute path='/friends' component={Friends} />
         <PrivateRoute path='/home' component={Welcome} />
@@ -32,8 +32,4 @@ function App() {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {};
-};
-
-export default connect(mapStateToProps, {})(App);
+export default App;

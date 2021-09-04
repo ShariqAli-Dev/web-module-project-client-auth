@@ -3,6 +3,8 @@ import axios from 'axios';
 export const ON_CHANGE = 'ON_CHANGE';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
+
+export const FRIEND_FORM_CHANGE = 'FRIEND_FORM_CHANGE';
 export const POST_FRIEND = 'POST_FRIEND';
 export const POSTED_FRIEND = 'POSTED_FRIEND';
 
@@ -23,16 +25,21 @@ export const loggedInUser = (token) => {
   localStorage.setItem('token', token);
 };
 
+export const friendFormChange = (event) => {
+  return { type: FRIEND_FORM_CHANGE, payload: event };
+};
+
 export const postFriend = () => (dispatch) => {
-  axios
-    .post('')
-    .then((res) => {
-      console.log(res);
-      dispatch(postedFriend(res.data));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  // import axios with auth
+  // axios
+  //   .post('')
+  //   .then((res) => {
+  //     console.log(res);
+  //     dispatch(postedFriend(res.data));
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 };
 
 export const postedFriend = (friendData) => {
