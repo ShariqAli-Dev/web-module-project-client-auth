@@ -14,14 +14,13 @@ export const loginUser = (userParams) => (dispatch) => {
   axios
     .post('http://localhost:5000/api/login', userParams)
     .then((res) => {
-      alert('YO YOU LOGGED IN!');
-      console.log(res);
+      dispatch(loggedInUser(res.data.payload));
     })
     .catch((err) => console.log(err));
 };
 
-export const loggedInUser = () => {
-  return null;
+export const loggedInUser = (token) => {
+  localStorage.setItem('token', token);
 };
 
 export const postFriend = () => (dispatch) => {

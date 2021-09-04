@@ -13,10 +13,17 @@ const LoginForm = (props) => {
       <div>
         <h4>Oi Bruv U loggin In Or wat?</h4>
       </div>
+
       <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          loginUser({ username, password });
+        onSubmit={async (e) => {
+          try {
+            e.preventDefault();
+            await loginUser({ username, password });
+            props.history.push('/home');
+          } catch (error) {
+            console.log(error);
+            alert(error.message);
+          }
         }}
       >
         <input
