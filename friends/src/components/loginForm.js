@@ -21,8 +21,8 @@ const LoginForm = (props) => {
             await loginUser({ username, password });
             props.history.push('/home');
           } catch (error) {
-            console.log(error);
             alert(error.message);
+            console.log(error);
           }
         }}
       >

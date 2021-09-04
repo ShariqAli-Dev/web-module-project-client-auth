@@ -1,15 +1,31 @@
 import { connect } from 'react-redux';
-import LoginForm from './components/LoginForm';
 import { Link, Route, Switch } from 'react-router-dom';
+
+import PrivateRoute from './components/PrivateRoute';
 import TestComponent from './components/TestComponent';
-function App(props) {
+import LoginForm from './components/LoginForm';
+
+function App() {
   return (
-    <>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to='login'>Login</Link>
+          </li>
+          <li>
+            <Link to='home/friends'>Home</Link>
+          </li>
+          <li>
+            <Link to='friends'>Friends</Link>
+          </li>
+        </ul>
+      </nav>
       <Switch>
-        <Route path='/home' component={TestComponent} />
-        <Route component={LoginForm} />
+        <PrivateRoute path='/home' component={TestComponent} />
+        <Route path='/login' component={LoginForm} />
       </Switch>
-    </>
+    </div>
   );
 }
 
