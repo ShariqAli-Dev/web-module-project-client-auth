@@ -10,7 +10,7 @@ export const loginReducer = (state = initialState, action) => {
     case ON_CHANGE:
       return {
         ...state,
-        [action.payload.target.name]: [action.payload.target.value],
+        [action.payload.target.name]: action.payload.target.value,
       };
 
     default:

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const ON_CHANGE = 'ON_CHANGE';
-export const ON_SUBMIT = 'ON_SUBMIT';
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGGED_IN_USER = 'LOGGED_IN_USER';
 export const POST_FRIEND = 'POST_FRIEND';
 export const POSTED_FRIEND = 'POSTED_FRIEND';
 
@@ -9,8 +10,18 @@ export const onChange = (event) => {
   return { type: ON_CHANGE, payload: event };
 };
 
-export const onSubmit = () => {
-  return { type: ON_SUBMIT };
+export const loginUser = (userParams) => (dispatch) => {
+  axios
+    .post('http://localhost:5000/api/login', userParams)
+    .then((res) => {
+      alert('YO YOU LOGGED IN!');
+      console.log(res);
+    })
+    .catch((err) => console.log(err));
+};
+
+export const loggedInUser = () => {
+  return null;
 };
 
 export const postFriend = () => (dispatch) => {

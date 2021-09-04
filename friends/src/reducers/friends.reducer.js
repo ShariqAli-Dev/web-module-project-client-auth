@@ -1,6 +1,5 @@
 const initialState = {
   friends: [],
-  token: null,
 };
 
 export const friendsReducer = (state = initialState, action) => {
