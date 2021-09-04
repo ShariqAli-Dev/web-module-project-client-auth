@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 const initialState = {
   friends: [],
+  token: null,
 };
 
 const reducer = (state = initialState, action) => {
