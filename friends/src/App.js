@@ -1,9 +1,11 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
-import TestComponent from './components/TestComponent';
+import Friends from './components/Friends';
 import LoginForm from './components/LoginForm';
+import Welcome from './components/Welcome';
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
             <Link to='login'>Login</Link>
           </li>
           <li>
-            <Link to='home/friends'>Home</Link>
+            <Link to='home'>Home</Link>
           </li>
           <li>
             <Link to='friends'>Friends</Link>
@@ -22,7 +24,8 @@ function App() {
         </ul>
       </nav>
       <Switch>
-        <PrivateRoute path='/home' component={TestComponent} />
+        <PrivateRoute path='/friends' component={Friends} />
+        <PrivateRoute path='/home' component={Welcome} />
         <Route path='/login' component={LoginForm} />
       </Switch>
     </div>
