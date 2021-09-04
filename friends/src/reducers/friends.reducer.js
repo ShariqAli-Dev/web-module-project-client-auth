@@ -1,4 +1,4 @@
-import { FRIEND_FORM_CHANGE } from '../actions';
+import { FRIEND_FORM_CHANGE, POSTED_FRIEND } from '../actions';
 
 const initialState = {
   friends: [],
@@ -19,6 +19,11 @@ export const friendsReducer = (state = initialState, action) => {
           ...state.formValues,
           [action.payload.target.name]: action.payload.target.value,
         },
+      };
+    case POSTED_FRIEND:
+      return {
+        ...state,
+        friends: action.payload,
       };
     default:
       return state;

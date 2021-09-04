@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { friendFormChange } from '../actions';
+import { friendFormChange, grabFriends, postFriend } from '../actions';
+import Friend from '../components/Friend';
 
 const Friends = (props) => {
   // state
-  const { name, age, email } = props.formValues;
+  const { friends, formValues } = props;
+  const { name, age, email } = formValues;
+
   // functions
-  const { friendFormChange } = props;
+  const { friendFormChange, grabFriends, postFriend } = props;
+
+  useEffect(() => {
+    grabFriends();
+  }, []);
 
   return (
     <div>
       <div>
         <p>Add Friend</p>
-        {/* add the onchange */}
-        <form>
+
+        <form
+          onSubmit={async (e) => {
+            try {
+              e.preventDefault();
+              await postFriend({ name, age, email });
+            } catch (error) {
+              alert(error.message);
+              console.log(error);
+            }
+          }}
+        >
           <input
             value={name}
             id='name'
@@ -40,7 +57,9 @@ const Friends = (props) => {
       </div>
       <div>
         <h1>Friends</h1>
-        {/* grab and render friends from redux props */}
+        {friends.map((friend) => {
+          return <Friend keyy={friend.id} friend={friend} />;
+        })}
       </div>
     </div>
   );
@@ -48,8 +67,13 @@ const Friends = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    friends: state.friendsReducer.friends,
     formValues: state.friendsReducer.formValues,
   };
 };
 
-export default connect(mapStateToProps, { friendFormChange })(Friends);
+export default connect(mapStateToProps, {
+  friendFormChange,
+  grabFriends,
+  postFriend,
+})(Friends);

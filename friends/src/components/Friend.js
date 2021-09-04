@@ -1,7 +1,12 @@
 const Friend = (props) => {
+  const { friend } = props;
   return (
-    <div>
-      <h1>Friend Component</h1>
+    <div className='friend'>
+      <p>{friend.age}</p>
+      <p>{friend.name}</p>
+      <p>{friend.email}</p>
     </div>
   );
 };
+
+export default Friend;
