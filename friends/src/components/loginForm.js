@@ -1,40 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { onChange, onSubmit } from '../actions/login.actions';
+
 const LoginForm = (props) => {
+  // state
   const { username, password } = props;
+  //functions
+  const { onChange } = props;
+
   return (
     <>
       <div>
-        <form>
-          <input
-            value={username}
-            id='username'
-            name='username'
-            placeholder='Username'
-          />
-          <input
-            value={password}
-            id='password'
-            name='password'
-            placeholder='Password'
-          />
-        </form>
+        <h4>Oi Bruv U loggin In Or wat?</h4>
       </div>
+      <form onSubmit={onSubmit}>
+        <input
+          value={username}
+          id='username'
+          name='username'
+          placeholder='Username'
+          onChange={onChange}
+        />
+        <input
+          value={password}
+          id='password'
+          name='password'
+          placeholder='Password'
+          onChange={onChange}
+        />
+      </form>
     </>
   );
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     username: state.loginReducer.username,
     password: state.loginReducer.password,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  // console.log(dispatch);
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, { onChange })(LoginForm);

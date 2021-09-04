@@ -1,22 +1,19 @@
 import { connect } from 'react-redux';
 import LoginForm from './components/LoginForm';
+import { Link, Route, Switch } from 'react-router-dom';
 
 function App(props) {
   return (
     <>
-      <div>
-        <h1>This is the app component</h1>
-      </div>
-
-      <LoginForm />
+      <Switch>
+        <Route component={LoginForm} />
+      </Switch>
     </>
   );
 }
 
 const mapStateToProps = (state) => {
-  return {
-    friends: [],
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, {})(App);
